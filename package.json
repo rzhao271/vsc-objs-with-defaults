@@ -1,0 +1,59 @@
+{
+  "name": "vsc-objs-with-defaults",
+	"displayName": "vsc-objs-with-defaults",
+	"description": "Testing object settings with default values",
+	"version": "0.0.1",
+	"engines": {
+		"vscode": "^1.68.0"
+	},
+	"categories": [
+		"Other"
+	],
+	"activationEvents": [
+        "onCommand:vsc-objs-with-defaults.helloWorld"
+	],
+	"main": "./extension.js",
+	"contributes": {
+		"commands": [{
+            "command": "vsc-objs-with-defaults.helloWorld",
+            "title": "Hello World"
+		}],
+		"configuration": {
+			"title": "My object configuration",
+			"properties": {
+				"vsc-obj-with-defaults.exampleObjectSetting": {
+					"type": "object",
+					"properties": {
+						"key1": {
+							"type": "string"
+						},
+						"key2": {
+							"type": "string"
+						}
+					},
+					"additionalProperties": false,
+					"default": {
+						"key1": "Default value"
+					}
+				}
+			}
+		}
+	},
+	"scripts": {
+		"lint": "eslint .",
+		"pretest": "npm run lint",
+		"test": "node ./test/runTest.js"
+	},
+	"devDependencies": {
+        "@types/vscode": "^1.68.0",
+        "@types/glob": "^7.2.0",
+        "@types/mocha": "^9.1.1",
+        "@types/node": "16.x",
+        "eslint": "^8.16.0",
+        "glob": "^8.0.3",
+        "mocha": "^10.0.0",
+        "typescript": "^4.7.2",
+        "@vscode/test-electron": "^2.1.3"
+    }
+
+}
